@@ -1,0 +1,418 @@
+_G.Cube_2 = false
+_G.Cube_8 = false
+_G.Cube_4 = false
+_G.Cube_32 = false
+_G.Cube_16 = false
+_G.AutoCode = false
+
+
+function Gravity1() 
+    while _G.Gravity1 == true do
+    game.Workspace.Gravity = _G.GravityValue
+    wait(0.1) if _G.Gravity1 == false then
+        game.Workspace.Gravity = 200
+
+        end
+    end
+end
+
+
+
+
+
+
+-- JP
+
+function JumpPower1() 
+    while _G.JumpPower1 == true do
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = _G.JumpValue
+    wait(0.1) if _G.JumpPower1 == false then
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+
+        end
+    end
+end
+
+
+
+-- Walkspeed
+
+
+
+function walkspeed1()
+    while _G.walkspeed1 == true do
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = _G.WalkValue
+    wait(0.1) if _G.walkspeed1 == false then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+          
+        end
+    end
+end
+
+
+
+
+
+-- 16
+
+
+
+
+
+
+function Cube16()
+    spawn(function()
+        while _G.Cube_16 == true do
+            TeleportPlayerTO(workspace.CubeFolder.Cube_16:GetChildren()[5].CFrame)
+            wait()
+    
+        end
+    end)
+end
+    
+    
+    
+    -- 32
+    
+    function Cube32()
+    spawn(function()
+        while _G.Cube_32 == true do
+            TeleportPlayerTO(workspace.CubeFolder.Cube_32:GetChildren()[3].CFrame)
+            wait()
+        end 
+    end)
+end
+    
+    
+    
+    
+    -- 4
+    
+        function Cube4()
+        spawn(function()
+            while _G.Cube_4 == true do
+            TeleportPlayerTO(workspace.CubeFolder.Cube_4:GetChildren()[4].CFrame)
+            wait()
+        end
+    end)
+end
+    
+    
+    -- 8
+    
+    function Cube8()
+    spawn(function()
+        while _G.Cube_8 == true do
+        TeleportPlayerTO(workspace.CubeFolder.Cube_8:GetChildren()[9].CFrame)
+        wait()
+        end
+    end)
+end
+    
+    
+    
+    
+    
+    -- 2
+    
+    function Cube2()
+    spawn(function()
+        while _G.Cube_2 == true do
+            TeleportPlayerTO(workspace.CubeFolder.Cube_2:GetChildren()[162].CFrame)
+            wait()
+        end
+    end)
+end
+    
+    
+    
+    
+    
+    -- Teleport
+    
+    
+    function TeleportPlayerTO(placeCFrame)
+            local plyr = game.Players.LocalPlayer
+            if plyr.Character then 
+             plyr.Character.HumanoidRootPart.CFrame = placeCFrame
+        end
+    end
+
+
+
+local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
+
+local GUI = Mercury:Create{
+    Name = "Onyx Testing Hub",
+    Size = UDim2.fromOffset(600, 400),
+    Theme = Mercury.Themes.Dark,
+    Link = "https://pornhub.com"
+}
+
+
+local Tab = GUI:Tab{
+	Name = "Farming",
+	Icon = "rbxassetid://8408499689"
+}
+
+
+local Tab2 = GUI:Tab{
+	Name = "Teleports",
+	Icon = "rbxassetid://6723742952"
+}
+
+
+local Tab3 = GUI:Tab{
+	Name = "Player Mods",
+	Icon = "rbxassetid://7059346373"
+}
+
+local Tab4 = GUI:Tab{
+	Name = "Misc",
+	Icon = "rbxassetid://11162756258"
+
+}
+
+
+Tab:Toggle{
+	Name = "Auto Speed Up",
+	StartingState = false,
+	Description = "Automatically grabs speed boosts! (if it doesnt tp you to theres none on the map)",
+	Callback = function(state)
+        _G.AutoGrab = state
+        while _G.AutoGrab == true do
+        wait()
+        local plr = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+        for i, v in pairs(workspace.PropsFolder['SPEED_UP']:GetDescendants()) do
+        if v.Name == "TouchInterest" and v.Parent then
+        firetouchinterest(plr, v.Parent, 0)
+        firetouchinterest(plr, v.Parent, 1)
+            end
+        end
+    end
+end
+}
+
+
+
+
+
+
+Tab:Toggle{
+	Name = "Cube 2",
+	StartingState = false,
+	Description = "Activates Auto TP to Cube 2",
+	Callback = function(state)
+        _G.Cube_2 = state
+        if state then
+            Cube2()
+    end
+end
+}
+
+
+Tab:Toggle{
+	Name = "Cube 4",
+	StartingState = false,
+	Description = "Activates Auto TP to Cube 4",
+	Callback = function(state)
+        _G.Cube_4 = state
+        if state then
+            Cube4()
+    end
+end
+}
+
+Tab:Toggle{
+	Name = "Cube 8",
+	StartingState = false,
+	Description = "Activates Auto TP to Cube 8",
+	Callback = function(state) 
+        _G.Cube_8 = state
+        if state then
+            Cube8()
+        end
+    end
+}
+
+
+Tab:Toggle{
+	Name = "Cube 16",
+	StartingState = false,
+	Description = "Activates Auto TP to Cube 16",
+	Callback = function(state)
+
+        _G.Cube_16 = state
+        if state then
+            Cube16()
+        end
+    end
+}
+
+Tab:Toggle{
+	Name = "Cube 32",
+	StartingState = false,
+	Description = "Activates Auto TP to Cube 32",
+	Callback = function(state) 
+        _G.Cube_32 = state
+        if state then
+            Cube32()
+        end
+    end
+}
+
+
+Tab2:Button{
+        Name = "VIP",
+        Description = "Teleports to VIP area",
+        Callback = function()
+            local CFrameEnd = CFrame.new(50.271019, 3.34124112, -297.612122, -0.0050550825, -1.60549867e-08, -0.999987245, -6.99449814e-08, 1, -1.57016107e-08, 0.999987245, 6.98647185e-08, -0.0050550825)
+            local Time = 2.5 -- how long til you reach your destination
+            local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time), {CFrame = CFrameEnd})
+            tween:Play()
+            tween.Completed:Wait()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.Rotation = 150.98999786376953, 0, 54.52000045776367 
+        end
+}
+
+Tab2:Button{
+    Name = "Become Worm",
+    Description = "Become a worm (Dont Press if you are already a worm)",
+    Callback = function()
+        local CFrameEnd = CFrame.new(-318.118652, 5.81504345, -124.489891, 0.999714375, 3.02214715e-08, -0.0238997359, -3.2571414e-08, 1, -9.7935704e-08, 0.0238997359, 9.86861792e-08, 0.999714375)
+        local Time = 1.5 -- how long til you reach your destination
+        local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time), {CFrame = CFrameEnd})
+        tween:Play()
+        tween.Completed:Wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Rotation = 150.98999786376953, 0, 54.52000045776367 
+    end
+}
+
+Tab2:Button{
+    Name = "TP To Lobby",
+    Description = "Teleport to where you respawn",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-321.317505, 4.70000839, -53.3484459, 0.999783695, 2.41965425e-09, -0.0207977444, -8.0312007e-10, 1, 7.77347751e-08, 0.0207977444, -7.77012588e-08, 0.99978369)
+    end
+}
+
+Tab2:Button{
+    Name = "Random TP",
+    Description = "TP's to a random place on the map (This will set you back to 2)",
+    Callback = function()
+        local CFrameEnd = CFrame.new(-318.118652, 5.81504345, -124.489891, 0.999714375, 3.02214715e-08, -0.0238997359, -3.2571414e-08, 1, -9.7935704e-08, 0.0238997359, 9.86861792e-08, 0.999714375)
+        local Time = 0.1 -- how long til you reach your destination
+        local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time), {CFrame = CFrameEnd})
+        tween:Play()
+        tween.Completed:Wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Rotation = 150.98999786376953, 0, 54.52000045776367 
+    end
+}
+
+Tab2:Button{
+    Name = "TP to exit",
+    Description = "TP's to the exit to go back to lobby",
+    Callback = function()
+        local CFrameEnd = CFrame.new(-313.012848, 3.34119725, -208.968536, -0.999999464, -7.31723659e-08, -0.00101897016, -7.31722025e-08, 1, -1.98764158e-10, 0.00101897016, -1.24203758e-10, -0.999999464)
+        local Time = 1.5 -- how long til you reach your destination
+        local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time), {CFrame = CFrameEnd})
+        tween:Play()
+        tween.Completed:Wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Rotation = 150.98999786376953, 0, 54.52000045776367 
+    end
+}
+
+
+
+
+Tab3:Toggle{
+	Name = "Jump ability",
+	StartingState = false,
+	Description = "Allows you to jump as a worm",
+	Callback = function(state) 
+        _G.JumpPower1 = state
+        JumpPower1()
+    end
+}
+
+
+Tab3:Toggle{
+	Name = "Enable WalkSpeed",
+	StartingState = false,
+	Description = "Enables Walkspeed",
+	Callback = function(state) 
+        _G.walkspeed1 = state
+        walkspeed1()
+    end
+}
+
+Tab3:Toggle{
+	Name = "Gravity",
+	StartingState = false,
+	Description = "Changes workspace gravity",
+	Callback = function(state) 
+        _G.Gravity1 = state
+        Gravity1()
+    end
+}
+
+
+Tab3:Slider{
+        Name = "Walk Speed",
+        Default = 16,
+        Min = 0,
+        Max = 400,
+        Callback = function(value) 
+            _G.WalkValue = value
+            
+     end
+}
+
+
+
+
+Tab3:Slider{
+    Name = "Jump Power",
+    Default = 50,
+    Min = 0,
+    Max = 400,
+    Callback = function(value) 
+        _G.JumpValue = value
+        
+ end
+}
+
+Tab3:Slider{
+    Name = "Gravity Value",
+    Default = 200,
+    Min = 0,
+    Max = 1000,
+    Callback = function(value) 
+        _G.GravityValue = value
+        
+ end
+}
+
+    Tab4:Button{
+        Name = "Redeem all codes",
+        Description = "self explanatory (may not be up to date btw)",
+        Callback = function()
+            local args = {[1] = "Likes10k"}
+            game:GetService("ReplicatedStorage"):WaitForChild("FeatureModules"):WaitForChild("CodeRedeem"):WaitForChild("Functions"):WaitForChild("RedeemRF"):InvokeServer(unpack(args))
+        
+    end
+}
+
+
+
+Tab4:Button{
+    Name = "Kill Yourself",
+    Description = "Resets your character",
+    Callback = function()
+       game.Players.LocalPlayer.Character.Humanoid.Health = 0
+    
+end
+}
+
+
+
